@@ -7,7 +7,7 @@ class Order:
         self.quantity = quantity
         self.size = size
         self.type = type
-        self.price = price
+        self.price = float(price[1:])
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
@@ -40,6 +40,7 @@ def start():
         else:
             break
 
-    return order
     for i in order:
         print(i.quantity, i.size, i.type, i.price)
+
+    return order
