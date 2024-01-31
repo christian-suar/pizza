@@ -16,6 +16,7 @@ def start(order):
    print("Total: $ " + str(round(tax + subtotal,2)))
 
    payment(total)
+   save(order, total)
 
    input("Press ENTER to Continue")
            
@@ -45,3 +46,10 @@ def payment(total):
       else:
          print("Please enter CASH or CREDIT only")
          input("Press ENTER to Continue")
+
+def save(order, total):
+   with open("pizza.dat", "a") as orders:
+      for pizza in order:
+         orders.write(f"{pizza.quantity}, {pizza.type}, {pizza.size}, {pizza.price}, ")
+      orders.write(f"{total}")
+      orders.write("\n")
